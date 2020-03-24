@@ -11,6 +11,14 @@
 
 @import "reset";
 
+// Uses the lists plugin
+.for(@x, 4)
+{
+  .col -@{x} {
+    width: @x * 50px;
+  }
+}
+
 // This extends the mixin
 .font-info() {
   font-weight: 400;
@@ -28,6 +36,9 @@ body {
   margin: 0;
   padding: 0;
   background: @secondaryColor;
+  // Using own plugins
+  z-index: ten();
+  min-height: avg(100, 250, 500, 400);
 }
 
 h1,

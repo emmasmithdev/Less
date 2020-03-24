@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
-.font-info {
+#ps .font-info {
   font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
 }
 html,
@@ -16,10 +16,21 @@ p {
   margin: 5px;
   padding: 0;
 }
+.col -1 {
+  width: 50px;
+}
+.col -2 {
+  width: 100px;
+}
+.col -3 {
+  width: 150px;
+}
+.col -4 {
+  width: 200px;
+}
 html,
 body {
   font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 400;
   margin: 0;
   padding: 0;
   background: blue;
