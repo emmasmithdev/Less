@@ -1,22 +1,14 @@
-@primaryColor: #e6af2e;
-@secondaryColor: blue;
-@minWidth: 100%;
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-p {
-  box-sizing: border-box;
-  margin: 5px;
-  padding: 0;
+@import "colors";
+@minWidth: 1024px;
+@breakpoints: {
+  desktop: 989px;
+  tablet: 768px;
+  phone: 480px;
 }
+
+@import (css) url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
+
+@import "reset";
 
 html,
 body {
@@ -37,7 +29,10 @@ h6 {
 
 /* Override the .audioplayer properties */
 
-.info-img {
+// Add your own prefixes using variables and interpolation
+@prefix: ps-prefix;
+
+.@{prefix}-info-img {
   max-width: @minWidth;
   border: 1px @secondaryColor solid;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.25);
@@ -81,31 +76,40 @@ footer {
 ul.menu {
   list-style-type: none;
   display: flex;
-}
 
-ul.menu li {
+  li {
   margin: 5px 2px;
-  background: #6b0504;
+  background: @highlightColor;
   border-radius: 2px;
   line-height: 1.7;
   padding: 5px;
   cursor: pointer;
-}
 
-ul.menu li:hover {
-  background: #a3320b;
-}
+    &:hover when (lightness(@highlightColor) < 50%) {
+      background: lighten(@highlightColor, 30%);
+    }
 
-ul.menu li a {
-  text-decoration: none;
-  color: #ddd;
+    &:hover when (lightness(@highlightColor) >= 50%) {
+      background: darken(@highlightColor, 30%);
+    }
+
+   a {
+      text-decoration: none;
+      color: #ddd;
+    }
+
+    @media (min-width: @breakpoints[tablet]){
+      color: blue;
+    }
+  }
 }
 
 #main {
   display: block;
 }
 
-.song {
+// .song when (isunit(@minWidth, "px")) {
+  .song {
   width: 175px;
   border-radius: 10px;
   padding: 6px;
@@ -113,10 +117,10 @@ ul.menu li a {
   background-color: rgba(255, 255, 255, .25);
   border: 1px @secondaryColor solid;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.25);
-}
-
-.song .title {
-  font-weight: 700;
+  
+  .title {
+    font-weight: 700;
+  }
 }
 
 .audioplayer .audioplayer-bar {
@@ -129,13 +133,13 @@ ul.menu li a {
 }
 
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: @breakpoints[phone]) {
   .container {
-    width: 480px;
+    width: @breakpoints[phone];
   }
 }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: @breakpoints[tablet]) {
   .info-img {
     float: right;
     max-width: 80px;
@@ -155,16 +159,16 @@ ul.menu li a {
 
 }
 
-@media only screen and (min-width: 989px) {
+@media only screen and (min-width: @breakpoints[desktop]) {
 
   // This overrides the variable inside this block only
-  @minWidth: 989px;
+  @minWidth: 989px@breakpoints[desktop];
 
   .container {
     width: @minWidth;
   }
   .song {
-    width: 600px;
+    width: ceil(@breakpoints[desktop] / 3);
   }
 }
 

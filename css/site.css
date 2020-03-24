@@ -1,21 +1,4 @@
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Roboto Thin'), local('Roboto-Thin'), url(https://fonts.gstatic.com/s/roboto/v20/KFOkCnqEu92Fr1MmgVxIIzc.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
 html,
 body,
 h1,
@@ -46,8 +29,8 @@ h6 {
   font-weight: 700;
 }
 /* Override the .audioplayer properties */
-.info-img {
-  max-width: 100%;
+.ps-prefix-info-img {
+  max-width: 1024px;
   border: 1px blue solid;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.25);
   margin: 1px;
@@ -87,18 +70,23 @@ ul.menu {
 }
 ul.menu li {
   margin: 5px 2px;
-  background: #6b0504;
+  background: #e8c;
   border-radius: 2px;
   line-height: 1.7;
   padding: 5px;
   cursor: pointer;
 }
 ul.menu li:hover {
-  background: #a3320b;
+  background: #c11c8a;
 }
 ul.menu li a {
   text-decoration: none;
   color: #ddd;
+}
+@media (min-width: 768px) {
+  ul.menu li {
+    color: blue;
+  }
 }
 #main {
   display: block;
@@ -127,7 +115,7 @@ ul.menu li a {
     width: 480px;
   }
 }
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
   .info-img {
     float: right;
     max-width: 80px;
@@ -145,12 +133,12 @@ ul.menu li a {
 }
 @media only screen and (min-width: 989px) {
   .container {
-    width: 989px;
+    width: 989px 989px;
   }
   .song {
-    width: 600px;
+    width: 330px;
   }
 }
 .foo {
-  width: 100%;
+  width: 1024px;
 }
