@@ -1,0 +1,37 @@
+@import "colors";
+
+// This is a detatched ruleset. It cannot be extended, only redefined.
+@box-shadow: {
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+// This is a namespace for a mixin
+#ps {
+// This is a mixin. It can be extended.
+    .font-info {
+        font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    }
+}
+
+.fore-color() {
+    background-color: @primaryColor;
+}
+
+.fore-color() when (lightness(@primaryColor) > 50%) {
+    color: white;
+}
+
+.fore-color() when (lightness(@primaryColor) <= 50%) {
+    color: black;
+}
+
+
+// These params are default values, they can be overridden.
+.box-me(@width: 1px, @color: @secondaryColor, @style: solid) {
+    border: @arguments;
+    border-radius: @width;
+}
+
+.multi(@x, @y){
+    @result: @x * @y;
+}
